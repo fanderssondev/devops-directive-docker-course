@@ -1,3 +1,4 @@
+name: fasondev-08
 services:
   client-react-vite:
     image: client-react-vite
@@ -14,7 +15,7 @@ services:
   client-react-nginx:
     labels:
       shipyard.primary-route: true
-      shipyard.route: '/'
+      shipyard.route: "/"
     image: client-react-nginx
     build:
       context: ../05-example-web-application/client-react/
@@ -27,7 +28,7 @@ services:
     restart: unless-stopped
   api-node:
     labels:
-      shipyard.route: '/api/node/'
+      shipyard.route: "/api/node/"
       shipyard.route.rewrite: true
     image: api-node
     build:
@@ -46,7 +47,7 @@ services:
     restart: unless-stopped
   api-golang:
     labels:
-      shipyard.route: '/api/golang/'
+      shipyard.route: "/api/golang/"
       shipyard.route.rewrite: true
     image: api-golang
     build:
