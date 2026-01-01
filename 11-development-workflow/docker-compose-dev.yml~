@@ -1,4 +1,4 @@
-name: fasondev-08
+version: "3.9"
 services:
   client-react-vite:
     image: client-react-vite
@@ -10,9 +10,8 @@ services:
       - type: bind
         source: ../05-example-web-application/client-react/
         target: /usr/src/app/
-        # Volume mount `node_modules` to override the mount the 05... above
       - type: volume
-        target: /usr/src/app/node_modules
+        target: /usr/src/app/node_modules 
       - type: bind
         source: ../08-running-containers/client-react/vite.config.js
         target: /usr/src/app/vite.config.js
@@ -21,9 +20,6 @@ services:
     ports:
       - 5173:5173
   client-react-nginx:
-    labels:
-      shipyard.primary-route: true
-      shipyard.route: "/"
     image: client-react-nginx
     build:
       context: ../05-example-web-application/client-react/
@@ -45,16 +41,15 @@ services:
       - type: bind
         source: ../05-example-web-application/api-node/
         target: /usr/src/app/
-        # Volume mount `node_modules` to override the mount the 05... above
       - type: volume
-        target: /usr/src/app/node_modules
+        target: /usr/src/app/node_modules 
     depends_on:
       - db
     environment:
       - DATABASE_URL=postgres://postgres:foobarbaz@db:5432/postgres
     networks:
       - frontend
-      - backend
+      - backend  
     ports:
       - 3000:3000
     restart: unless-stopped
