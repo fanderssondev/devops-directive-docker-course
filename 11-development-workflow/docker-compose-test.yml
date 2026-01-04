@@ -1,0 +1,17 @@
+name: fasondev-08
+
+services:
+  api-node:
+    command:
+      - "npm"
+      - "run"
+      - "test"
+  api-golang:
+    command:
+      - "go"
+      - "test"
+      - "-v"
+      - "./"
+      - "./database"
+      - "./healthcheck"
+      - "./test"
